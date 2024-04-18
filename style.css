@@ -13,6 +13,10 @@ body {
     background-color: #f4f4f4;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -21,16 +25,15 @@ body {
 }
 
 body, html {
-    font-family: 'Montserrat', sans-serif; /* Primary font */
+    font-family: 'Montserrat', sans-serif;
     background-color: #f4f4f4;
     color: #333;
     font-size: 16px;
     line-height: 1.6;
 }
 
-/* Navigation Styles */
 nav {
-    background-color: #333;
+    background-color: #161616;
     color: white;
     width: 100%;
     position: sticky;
@@ -47,13 +50,20 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 5px 15px;
+}
+
+@media (max-width: 768px) {
+    nav ul li {
+        margin: 5px 0;
+    }
 }
 
 nav ul li a {
     color: white;
     padding: 10px;
-    transition: background-color 0.3s;
+    transition: all 0.8s ease;
+    border-radius: 5px;
 }
 
 nav ul li a:hover, nav ul li a.active {
@@ -62,9 +72,9 @@ nav ul li a:hover, nav ul li a.active {
 
 section {
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
     background-color: #fff;
-    min-height: calc(100vh - 45px);
+    min-height: 100vh;
 }
 
 footer {
@@ -77,45 +87,137 @@ footer {
 h2 {
     color: #333;
     text-align: center;
-    margin: 20px 0;
 }
 
 
-
-
-
-
-#about {
-    background-color: #333;
+#home {
+    background-image: url('img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: white;
     margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    min-height: calc(100vh - 55px);
 }
 
-#about h2 {
-    font-family: 'Inter';
+#home h2 {
     letter-spacing: 0.2rem;
-    color: white
-
+    text-transform: uppercase;
+    font-size: 9.5rem;
+    color: white;
 }
 
-
-.skills-icons i {
-    font-size: 24px;
-    color: #333;
-    margin-right: 10px;
+#home p {
+    color: white;
+    font-size: 2rem;
+    margin-top: -30px;
 }
 
+#home #animated {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column; /* Stack the navigation items vertically on smaller screens */
+#home .socials-icons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+}
+
+#home .socials-icons a {
+    color: white;
+    font-size: 30px;
+    margin: 10px 0;
+    transition: all 0.5s ease;
+}
+
+#home .socials-icons a:hover {
+    color: grey;
+    transform: scale(1.4);
+}
+
+#home .socials-icons a:active {
+    color: rgb(54, 54, 54);
+}
+
+#home .arrow-icon {
+    position: absolute;
+    bottom: 30px;
+    font-size: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-name: bounce;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+#home .arrow-icon a {
+    color: white;
+    transition: all 0.5s ease;
+}
+
+#home .arrow-icon a:hover {
+    color: grey;
+}
+
+@keyframes bounce {
+    0%, 10%, 25%, 40%, 100% {
+        transform: translateY(0) translateX(-50%);
     }
-
-    nav ul li {
-        margin: 10px 0;
+    20% {
+        transform: translateY(-20px) translateX(-50%);
     }
-
-    nav ul li a {
-        display: block;
+    30% {
+        transform: translateY(-10px) translateX(-50%);
     }
 }
+
+#home .arrow-icon a {
+    color: white;
+}
+
+@media screen and (max-width: 1095px) {
+    #home h2 {
+        font-size: 7rem;
+        line-height: 1.2;
+    }
+
+    #home p {
+        font-size: 1.8rem;
+        margin-top: -10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #home h2 {
+        font-size: 5rem;
+        line-height: 1.2;
+    }
+
+    #home p {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    #home .socials-icons {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    #home .socials-icons a {
+        margin: 5px 0;
+        font-size: 25px;
+    }
+
+    #home .arrow-icon {
+        font-size: 30px;
+    }
+}
+
