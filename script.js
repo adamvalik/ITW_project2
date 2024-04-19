@@ -19,6 +19,14 @@ window.addEventListener('scroll', function() {
             link.classList.add('active');
         }
     });
+
+    // sections.forEach(section => {
+    //     if (section.getAttribute('id') === current) {
+    //         section.classList.add('active');
+    //     } else {
+    //         section.classList.remove('active');
+    //     }
+    // });
 });
 
 
@@ -40,7 +48,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const roles = ['student', 'programmer', 'developer', 'runner', 'orienteerer', 'rogalo', 'batman'];
+    const roles = ['student', 'programmer', 'developer', 'runner', 'orienteerer', 'rogalo'];
     const animatedText = document.getElementById('animated');
     let currentIndex = 0;
 
