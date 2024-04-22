@@ -20,13 +20,13 @@ window.addEventListener('scroll', function() {
         }
     });
 
-    // sections.forEach(section => {
-    //     if (section.getAttribute('id') === current) {
-    //         section.classList.add('active');
-    //     } else {
-    //         section.classList.remove('active');
-    //     }
-    // });
+    sections.forEach(section => {
+        if (section.getAttribute('id') === current) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+    });
 });
 
 

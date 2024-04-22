@@ -1,4 +1,3 @@
-
 :root {
     --color: yellow;
 }
@@ -7,14 +6,6 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    font-size: 1.2rem;
-    color: #333;
-    background-color: #f4f4f4;
 }
 
 html {
@@ -28,11 +19,11 @@ html {
     text-decoration: none;
 }
 
-body, html {
+body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #111111;
+    background-color: white;
     color: #333;
-    font-size: 16px;
+    font-size: 1.2rem;
     line-height: 1.6;
 }
 
@@ -46,7 +37,7 @@ section {
     transition: all 0.3s ease;
 }
 
-section:hover {
+section.active {
     filter: blur(0);
     box-shadow: none;
 }
@@ -267,10 +258,6 @@ nav ul li a.active {
         text-shadow: 0 0 1000px #ff0;
     }
 }
-  
-#about .about-text p {
-    font-size: 1.2rem;
-}
 
 #about p {
     cursor: none;
@@ -328,16 +315,35 @@ nav ul li a.active {
     transition: none;
 }
 
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1033px) {
     section {
         max-height: none;
     }
+    
+    #about img {
+        width: 250px;
+        margin: 0;
+    }
 
+    #about .about-text {
+        padding: 5%;
+    }
+
+    #about .about-text h2 {
+        font-size: 2.5rem;
+    }
+
+    #about .about-text p {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
     #about {
         flex-direction: column;
         padding: 60px 20px 20px 20px;
     }
+
     #about img {
         width: 200px;
         margin: 0;
@@ -346,12 +352,173 @@ nav ul li a.active {
     #about .about-text {
         width: 100%;
     }
-
-    #about .about-text h2 {
-        font-size: 2rem;
-    }
-
+    
     #about .about-text p {
         font-size: 1rem;
     }
+}
+
+#education {
+    background-color: #b1adab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#education h2 {
+    text-align: left;
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+#education .timeline {
+    padding-left: 40px;
+    border-left: 2px solid #000;
+}
+
+#education .timeline-block {
+    position: relative;
+    margin-bottom: 50px;
+    transition: all 0.5s ease;
+}
+
+#education .timeline-dot {
+    position: absolute;
+    left: -49px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #000;
+}
+
+#education .timeline-date {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+@media screen and (max-width: 768px) {
+    #education {
+        font-size: 1rem;
+    }
+
+    #education h2 {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    #education .timeline {
+        padding-left: 30px;
+        border-left: 1.8px solid #000;
+    }
+
+    #education .timeline-dot {
+        left: -36.6px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+    }
+
+    #education .timeline-date {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+    }   
+}
+
+#skills {
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 50px 20px;
+}
+
+#skills h2 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+#skills p {
+    margin-bottom: 40px;
+    max-width: 800px;
+}
+
+#skills .skills-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+#skills .skills-icons i {
+    font-size: 50px;
+    text-shadow: none;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+#skills .skills-icons i:hover {
+    color: var(--color);
+    text-shadow: 0 0 5px var(--color);
+    transform: scale(1.4);
+    z-index: 1;
+}
+
+#skills .skills-icons i::after {
+    content: attr(title);
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    background-color: white;
+    color: black;
+    font: 400 0.7rem 'Montserrat', sans-serif;
+    padding: 4px 8px;
+    border-radius: 4px; 
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+#skills .skills-icons i:hover::after {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+    text-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+    #skills {
+        font-size: 1rem;
+    }
+
+    #skills h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    #skills p {
+        margin: 0 10px 30px 10px;
+    }
+
+    #skills .skills-icons {
+        gap: 20px;
+    }
+
+    #skills .skills-icons i {
+        font-size: 40px;
+    }
+
+    #skills .skills-icons i:hover {
+        text-shadow: 0 0 3px var(--color);
+        transform: scale(1.3);
+    }
+    
+    #skills .skills-icons i::after {
+        display: none;
+    }
+    
 }
