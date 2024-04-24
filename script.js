@@ -1,9 +1,11 @@
+// find out the current section (on the viewport) and change the active class in the navigation menu
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
 
     let current = '';
 
+    // get the current section when scrolling
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -12,6 +14,7 @@ window.addEventListener('scroll', function() {
         }
     });
 
+    // add active class to the nav link to mark it
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').includes('#' + current)) {
@@ -21,41 +24,43 @@ window.addEventListener('scroll', function() {
 });
 
 
+// animated text on the home page
 document.addEventListener('DOMContentLoaded', function () {
-    const roles = ['student', 'programmer', 'developer', 'runner', 'orienteerer', 'rogalo'];
+    const states = ['student', 'programmer', 'developer', 'runner', 'orienteerer', 'rogalo'];
     const animatedText = document.getElementById('animated');
     let currentIndex = 0;
 
+    // change the role every 3 seconds
     function updateText() {
         animatedText.style.opacity = 0;
 
         setTimeout(() => {
-            animatedText.textContent = roles[currentIndex];
+            animatedText.textContent = states[currentIndex];
             animatedText.style.opacity = 1;
-            currentIndex = (currentIndex + 1) % roles.length;
-        }, 500);
+            currentIndex = (currentIndex + 1) % states.length;
+        }, 500); // 0.5s fade out/in effect
 
-        setTimeout(updateText, 3000); 
+        setTimeout(updateText, 3000); // update the text every 3 seconds
     }
 
-    setTimeout(updateText, 1000); 
+    setTimeout(updateText, 1000); // start the animation after 1 second
 });
 
 
+// hamburger menu
 document.addEventListener('DOMContentLoaded', (event) => {
     const burger = document.querySelector('.burger');
     const links = document.querySelector('.links');
-    const menuLinks = links.querySelectorAll('a'); // Assuming your links are <a> elements
+    const navLinks = links.querySelectorAll('nav ul li a');
 
-    // Toggle menu visibility when the hamburger icon is clicked
+    // toggle the visibility when clicking the button
     burger.addEventListener('click', () => {
         links.classList.toggle('active');
     });
 
-    // Add an event listener to each link in the menu
-    menuLinks.forEach(link => {
+    // close the menu when a section is clicked
+    navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Close the menu when a link is clicked
             if (links.classList.contains('active')) {
                 links.classList.remove('active');
             }
@@ -64,44 +69,56 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
+
+// --- counter animation --- //
+
+// check if the counter is visible on the screen
 function isElementVisible(el) {
-    const rect = el.getBoundingClientRect();
+    const counter = el.getBoundingClientRect();
     return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      counter.top >= 0 &&
+      counter.left >= 0 &&
+      counter.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      counter.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-  }
-  
+}
+
+// if the counter is visible (and has not been already animated), start the animation
 function animateCounterIfVisible() {
     document.querySelectorAll('.counter').forEach(counter => {
         if (isElementVisible(counter) && !counter.classList.contains('animated')) {
-        animateValue(counter, parseInt(counter.dataset.target));
-        counter.classList.add('animated');
+            animateValue(counter, parseInt(counter.dataset.target));
+            counter.classList.add('animated');
         }
     });
 }
 
+// the animation itself
 function animateValue(obj, end) {
-    let current = parseInt(obj.textContent);
-    const increment = end > current ? 6 : -1;
+    let current = 0; // start from 0
     
+
     const step = () => {
-        current += increment;
+        // increase by 5 
+        if (end > current) {
+            current += 5;
+        }
+        // decrease by 1 if the target was overshot
+        else {
+            current -= 1;
+        }
+        // update the text content
         obj.textContent = current;
         
-        if ((increment > 0 && current < end) || (increment < 0 && current > end)) {
+        // check if the target value has been reached
+        if (current != end) {
             setTimeout(step, 1);
         }
     };
-    
     step();
 }
 
-// Listen for scroll events
+// start the animation when the counter is visible
+window.addEventListener('load', animateCounterIfVisible);
 window.addEventListener('scroll', animateCounterIfVisible);
-
-// Initial check
-animateCounterIfVisible();
   

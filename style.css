@@ -23,7 +23,7 @@ body {
 }
 
 section {
-    background-color: var(--light);
+    background-color: #202020;
     min-height: 80vh;
 }
 
@@ -127,7 +127,7 @@ nav {
 }
 
 #home {
-    background-image: url('img/bg.jpg');
+    background-image: url('bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
