@@ -28,10 +28,8 @@ body {
 }
 
 section {
-    padding: 20px;
     background-color: #fff;
     min-height: 100vh;
-    max-height: 100vh;
     filter: blur(0.5px);
     box-shadow: inset 0 0 30px #161616;
     transition: all 0.3s ease;
@@ -63,7 +61,7 @@ nav {
     z-index: 1000;
 }
 
-nav ul {
+.links {
     list-style-type: none;
     display: flex;
     justify-content: center;
@@ -71,13 +69,34 @@ nav ul {
     padding: 10px 0;
 }
 
-nav ul li {
+.links li {
     margin: 5px 15px;
 }
 
+.burger {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    nav ul li {
-        margin: 5px 0;
+    .links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #161616;
+        transition: all 0.5s ease;
+        z-index: 1000;
+
+    }
+
+    .links.active {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
     }
 }
 
@@ -103,13 +122,13 @@ nav ul li a.active {
     background-position: center;
     background-attachment: fixed;
     color: white;
-    margin-top: 0;
     display: flex;
+    padding: 0 20px;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     position: relative;
-    min-height: calc(100vh - 55px);
     filter: blur(0);
 }
 
@@ -123,7 +142,8 @@ nav ul li a.active {
 #home p {
     color: white;
     font-size: 2rem;
-    margin-top: -30px;
+    padding-bottom: 100px;
+    text-align: center;
 }
 
 #home #animated {
@@ -136,7 +156,7 @@ nav ul li a.active {
     flex-direction: column;
     position: absolute;
     right: 40px;
-    bottom: 40px;
+    bottom: 55px;
 }
 
 #home .socials-icons a {
@@ -157,7 +177,7 @@ nav ul li a.active {
 
 .arrow-icon {
     position: absolute;
-    bottom: 30px;
+    bottom: 55px;
     font-size: 50px;
     left: 50%;
     transform: translateX(-50%);
@@ -169,10 +189,12 @@ nav ul li a.active {
 .arrow-icon a {
     color: white;
     transition: all 0.5s ease;
+    opacity: 0.5;
 }
 
 .arrow-icon a:hover {
     color: var(--color);
+    opacity: 1;
 }
 
 @keyframes bounce {
@@ -233,6 +255,7 @@ nav ul li a.active {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 100vh;
 }
 
 #about .about-text {
@@ -434,7 +457,7 @@ nav ul li a.active {
     align-items: center;
     justify-content: center;
     color: white;
-    padding: 50px 20px;
+    padding: 0 20px;
 }
 
 #skills h2 {
@@ -519,6 +542,90 @@ nav ul li a.active {
     
     #skills .skills-icons i::after {
         display: none;
+    }    
+}
+
+#hobbies {
+    background-color: #b1adab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: none;
+    padding: 80px 20px;
+}
+
+#hobbies h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+#hobbies h2 ~ p { /* select any <p> that comes after <h2> aka the first <p>*/
+    margin: 0 auto 40px auto;
+    max-width: 800px;
+}
+
+#hobbies .divider {
+    background-color: #333;
+    padding: 1px;
+    opacity: 0.5;
+}
+
+#hobbies .hobby-container {
+    display: flex;
+    padding: 20px 0;
+    max-width: 800px;
+}
+
+#hobbies .hobby-container:hover img {
+    transform: scale(1.1);
+}
+
+#hobbies > div > div:nth-child(4) {
+    flex-direction: row-reverse;
+}
+
+#hobbies img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+    transition: all 0.5s ease;
+}
+
+#hobbies .hobby-text h3 {  
+    margin-left: 30px; 
+}
+
+#hobbies .hobby-text p {
+    max-width: 500px;
+    padding: 20px 30px 20px 30px;
+}
+
+@media screen and (max-width: 768px) {
+    #hobbies h2 {
+        font-size: 2.5rem;
     }
-    
+
+    #hobbies p {
+        font-size: 1rem;
+    }
+
+    #hobbies > div > div.hobby-container {
+        flex-direction: column-reverse;
+    }
+
+    #hobbies img {
+        width: 250px;
+        height: 250px;
+        align-self: center;
+    }
+
+    #hobbies .hobby-text h3 {
+        margin: 20px 0; 
+    }
+
+    #hobbies .hobby-text p {
+        padding: 0;
+    }
+
 }

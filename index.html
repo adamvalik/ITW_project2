@@ -16,17 +16,21 @@
     </head>
     <body>
         <nav>
-            <ul>
+            <button class="burger"><i class="fa-solid fa-bars"></i></button>
+            <ul class="links">
                 <li><a href="#home">home</a></li>
                 <li><a href="#about">about</a></li>
                 <li><a href="#education">education</a></li>
                 <li><a href="#skills">skills</a></li>
+                <li><a href="#hobbies">hobbies</a></li>
             </ul>
         </nav>
 
         <section id="home">
-            <h2>Adam Valík</h2>
+            <div class="name">
+                <h2>Adam Valík</h2> 
             <p>I'm a <span id="animated">________</span></p>
+            </div>
             <div class="icons">
                 <div class="socials-icons">    
                     <a href="https://github.com/adamvalik"><i class="fa-brands fa-github" title="Github"></i></a>
@@ -112,15 +116,34 @@
 
 
         <section id="hobbies">
-            <h2>Hobbies</h2>
-            <ul>
-                <li>Programming</li>
-                <li>Reading</li>
-                <li>Playing the guitar</li>
-                <li>Playing video games</li>
-                <li>Watching TV shows</li>
-            </ul>
+            <div>
+                <h2>Hobbies</h2>
+                <p>When I'm not studying or working on projects, I enjoy spending time outdoors doing endurance sports. Here are some of my favorite activities:</p>
 
+                <div class="divider"></div>
+
+                <div class="hobby-container">
+                    <div class="hobby-text">
+                        <h3>Orienteering</h3>
+                        <p>I've been doing orienteering since I was a child, so it's more of a lifestyle than just a hobby to me. I was a member of the Czech national team for a few years and enjoyed competing also in different countries.</p> 
+                    </div>
+                    <img src="img/orienteering.jpg" alt="photo of me doing orienteering">
+                </div>
+                
+                <div class="divider"></div>
+
+                <div class="hobby-container">
+                    <div class="hobby-text">
+                        <h3>Ultra running</h3>
+                        <p>Running long distances in the mountains holds a special appeal for me, so much so that it has become my preferred way to enjoy holidays. Whenever I have the opportunity to travel, you can be sure that the long runs are already planned.</p>
+                    </div>
+                    <img src="img/mountain.jpg" alt="photo of a mountain">
+                </div>
+
+                <div class="divider"></div>
+
+
+            </div>
         </section>
 
         <footer>

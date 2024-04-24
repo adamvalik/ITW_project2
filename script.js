@@ -30,23 +30,6 @@ window.addEventListener('scroll', function() {
 });
 
 
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - 55; // height of the sticky menu
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    });
-});
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const roles = ['student', 'programmer', 'developer', 'runner', 'orienteerer', 'rogalo'];
     const animatedText = document.getElementById('animated');
@@ -59,10 +42,20 @@ document.addEventListener('DOMContentLoaded', function () {
             animatedText.textContent = roles[currentIndex];
             animatedText.style.opacity = 1;
             currentIndex = (currentIndex + 1) % roles.length;
-        }, 500); // Wait for the fade out to complete before changing the text
+        }, 500);
 
-        setTimeout(updateText, 3000); // Change text every 3 seconds
+        setTimeout(updateText, 3000); 
     }
 
-    setTimeout(updateText, 1000); // Start the animation cycle
+    setTimeout(updateText, 1000); 
+});
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const burger = document.querySelector('.burger');
+    const links = document.querySelector('.links');
+
+    burger.addEventListener('click', () => {
+        links.classList.toggle('active');
+    });
 });
