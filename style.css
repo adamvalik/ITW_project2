@@ -1,3 +1,4 @@
+/* color variables */
 :root {
     --color: yellow;
     --light: #e8e5e4;
@@ -7,6 +8,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* global settings */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +17,7 @@ html {
 }
 
 body {
+    /* montserrat font my beloved */
     font-family: 'Montserrat', sans-serif;
     background-color: #161616;
     color: var(--light);
@@ -27,6 +30,7 @@ section {
     min-height: 80vh;
 }
 
+/* set padding for sections except the home page */
 section:not(#home) {
     padding-top: 120px;
     padding-bottom: 60px;
@@ -44,6 +48,7 @@ h2 {
     text-align: center;
 }
 
+/* sticky navigation */
 nav {
     background-color: #161616;
     color: var(--light);
@@ -77,10 +82,12 @@ nav {
     color: black;
 }
 
+/* active section is the one in the viewport */
 .links li a.active {
     background-color: #555;
 }
 
+/* hamburger menu for the mobile version */
 .burger {
     display: none;
     background: inherit; 
@@ -105,6 +112,7 @@ nav {
         margin: 10px 0;
     }
 
+    /* display the menu when the burger button is clicked */
     .links.active {
         display: flex;
     }
@@ -126,6 +134,7 @@ nav {
     }
 }
 
+/* home section with the background image */
 #home {
     background-image: url('bg.jpg');
     background-size: cover;
@@ -139,7 +148,6 @@ nav {
     align-items: center;
     flex-direction: column;
     position: relative;
-    filter: blur(0);
 }
 
 #home h2 {
@@ -156,6 +164,7 @@ nav {
     text-align: center;
 }
 
+/* animated text - transitioning through opacity, changing with js */
 #home #animated {
     opacity: 1;
     transition: opacity 0.5s;
@@ -185,6 +194,7 @@ nav {
     color: rgb(54, 54, 54);
 }
 
+/* arrow icon at the bottom of the home section to get to the next section */
 .arrow-icon {
     position: absolute;
     bottom: 55px;
@@ -207,6 +217,7 @@ nav {
     opacity: 1;
 }
 
+/* the bounce effect of the arrow icon */
 @keyframes bounce {
     0%, 10%, 25%, 40%, 100% {
         transform: translateY(0) translateX(-50%);
@@ -219,8 +230,6 @@ nav {
         transform: translateY(-10px) translateX(-50%);
     }
 }
-
-
 
 @media screen and (max-width: 1095px) {
     #home h2 {
@@ -282,6 +291,7 @@ nav {
     animation: lightning 6s infinite;
 }
 
+/* light effect of the about h2 */
 @keyframes lightning {
     0%, 57%, 63%, 65%, 100% {
         color: var(--light);
@@ -293,6 +303,7 @@ nav {
     }
 }
 
+/* turning off the cursor for the paragraph */
 #about p {
     cursor: none;
 }
@@ -301,6 +312,7 @@ nav {
     color: var(--light);
 }
 
+/* light effect when hovering on the text */
 #about p span:hover {
     color: var(--color);
     text-shadow: 0 0 5px var(--color);
@@ -328,6 +340,7 @@ nav {
     margin-top: 25px;
 }
 
+/* "button" link to the CV */
 #about .about-text a {
     color: var(--light);
     font-weight: bold;
@@ -406,15 +419,15 @@ nav {
     margin-bottom: 40px;
 }
 
+/* timeline next to the education section */
 #education .timeline {
     padding-left: 40px;
-    border-left: 2px solid #000;
+    border-left: 2px solid black;
 }
 
 #education .timeline-block {
     position: relative;
     margin-bottom: 50px;
-    transition: all 0.5s ease;
 }
 
 #education .timeline-dot {
@@ -424,14 +437,39 @@ nav {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #000;
+    background-color: black;
+    transition: all 0.3s ease-in-out;
 }
 
 #education .timeline-date {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #555;
+    color: var(--light);
+    transition: all 0.3s ease-in-out;
 }
+
+/* hover effects */
+#education .timeline-block:hover .timeline-dot {
+    background-color: var(--color);
+    width: 20px;
+    height: 20px;
+    top: 5px;
+}
+
+/* dot slide animation */
+#education .timeline-block:first-child:hover .timeline-dot {
+    left: 152px;
+}
+
+#education .timeline-block:not(:first-child):hover .timeline-dot {
+    left: 120px;
+}
+
+/* date color slide along with the dot */
+#education .timeline-block:hover .timeline-date {
+    color: var(--color);
+}
+
 
 @media screen and (max-width: 768px) {
     #education {
@@ -511,11 +549,12 @@ nav {
 
 #skills .skills-icons i:hover {
     color: var(--color);
-    text-shadow: 0 0 5px var(--color);
-    transform: scale(1.4);
+    text-shadow: 0 0 3px var(--color);
+    transform: scale(1.2);
     z-index: 1;
 }
 
+/* tooltips */
 #skills .skills-icons i::after {
     content: attr(title);
     position: absolute;
@@ -528,7 +567,7 @@ nav {
     padding: 4px 8px;
     border-radius: 4px; 
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 #skills .skills-icons i:hover::after {
@@ -596,16 +635,6 @@ nav {
     max-width: 800px;
 }
 
-#hobbies .hobby-container:hover img {
-    transform: scale(1.05);
-    filter: grayscale(0);
-    box-shadow: 0 0 20px black;
-}
-
-#hobbies > div > div:nth-child(4) {
-    flex-direction: row-reverse;
-}
-
 #hobbies img {
     width: 300px;
     height: 300px;
@@ -614,6 +643,18 @@ nav {
     filter: grayscale(1);
     box-shadow: none;
     transition: all 0.5s ease;
+}
+
+/* again the img hover effect */
+#hobbies .hobby-container:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0);
+    box-shadow: 0 0 20px black;
+}
+
+/* the second hobby have reversed position of img and text */
+#hobbies > div > div:nth-child(4) {
+    flex-direction: row-reverse;
 }
 
 #hobbies .hobby-text h3 {  
@@ -672,8 +713,6 @@ nav {
     #hobbies .hobby-text p {
         padding: 0;
     }
-
-
 }
 
 @media screen and (max-width: 560px) {
